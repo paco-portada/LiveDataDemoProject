@@ -27,14 +27,14 @@ class MainActivity : AppCompatActivity() {
         })
         /** Observing finished LiveData object from ViewModel */
         viewModel.finished.observe(this, Observer {
-            if(it){
+            if (it){
                 Toast.makeText(this, "Finished!", Toast.LENGTH_SHORT).show()
             }
         })
 
         binding.startBtn.setOnClickListener {
-            if (binding.numberInput.text.isEmpty() || binding.numberInput.text.length < 4){
-                Toast.makeText(this, "Invalid Number", Toast.LENGTH_SHORT).show()
+            if (binding.numberInput.text.isEmpty() || binding.numberInput.text.toString().toInt() < 1000){
+                Toast.makeText(this, "Invalid Number, it is lower than 1000 ms", Toast.LENGTH_SHORT).show()
             }else{
                 viewModel.timerValue.value = binding.numberInput.text.toString().toLong()
                 viewModel.startTimer()

@@ -27,6 +27,9 @@ class MainActivityViewModel: ViewModel() {
 
     /** Start Timer. This function is triggered from MainActivity. */
     fun startTimer(){
+        _finished.value = false
+        // _seconds.value = 0
+
         timer = object : CountDownTimer(timerValue.value!!.toLong(), 1000){
             override fun onFinish() {
                 _finished.value = true
